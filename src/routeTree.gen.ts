@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 
@@ -31,9 +33,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
@@ -51,7 +63,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/resources': typeof ResourcesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -59,7 +73,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/resources': typeof ResourcesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs': typeof ProgramsIndexRoute
 }
@@ -68,7 +84,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/resources': typeof ResourcesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/': typeof ProgramsIndexRoute
 }
@@ -78,18 +96,29 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/privacy-policy'
     | '/resources'
+    | '/terms-of-service'
     | '/programs/$slug'
     | '/programs/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/about' | '/contact' | '/resources' | '/programs/$slug' | '/programs'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/privacy-policy'
+    | '/resources'
+    | '/terms-of-service'
+    | '/programs/$slug'
+    | '/programs'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/privacy-policy'
     | '/resources'
+    | '/terms-of-service'
     | '/programs/$slug'
     | '/programs/'
   fileRoutesById: FileRoutesById
@@ -98,7 +127,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ResourcesRoute: typeof ResourcesRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
@@ -126,11 +157,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs/': {
@@ -154,7 +199,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ResourcesRoute: ResourcesRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
 }
