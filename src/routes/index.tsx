@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
-import aboutImg from "@/assets/about.jpg";
+import heroImg from "@/assets/hero-learner.jpg.asset.json";
 import founder from "@/assets/founder.jpg.asset.json";
 import { Reveal } from "@/components/site/Reveal";
-import { PROGRAMS } from "@/lib/site";
+import { PROGRAMS, CONTACT } from "@/lib/site";
+import { Testimonials } from "@/components/site/Testimonials";
+import { EnrolmentForm } from "@/components/site/EnrolmentForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,7 +32,7 @@ export const Route = createFileRoute("/")({
           "@type": "EducationalOrganization",
           name: "Alpha Academy",
           slogan: "From Learning to Leading",
-          email: "salifuebenezer10@gmail.com",
+          email: CONTACT.email,
           telephone: "+2349036452259",
         }),
       },
@@ -117,8 +118,8 @@ function Home() {
           <Reveal delay={120}>
             <div className="relative">
               <img
-                src={heroImg}
-                alt="Learners collaborating on laptops during an Alpha Academy session"
+                src={heroImg.url}
+                alt="A professional working on a laptop, applying AI tools to everyday work"
                 width={1600}
                 height={1200}
                 className="w-full rounded-sm object-cover"
@@ -136,23 +137,13 @@ function Home() {
 
       {/* ABOUT */}
       <section className="bg-background">
-        <div className="container-page grid items-center gap-14 py-24 lg:grid-cols-2">
+        <div className="container-page py-24">
           <Reveal>
-            <img
-              src={aboutImg}
-              alt="A professional applying AI tools to everyday work"
-              width={1200}
-              height={1408}
-              loading="lazy"
-              className="aspect-[4/5] w-full rounded-sm object-cover"
-            />
-          </Reveal>
-          <Reveal delay={100}>
             <p className="eyebrow">About Alpha Academy</p>
             <h2 className="mt-5 text-4xl leading-tight font-extrabold uppercase sm:text-5xl">
               AI skills. Real-world application.
             </h2>
-            <p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-3xl leading-relaxed text-muted-foreground">
               Alpha Academy is a modern learning institution dedicated to equipping individuals with
               practical AI skills that are relevant to what they do. We bridge the gap between
               learning about AI and applying it meaningfully in education, careers, business, and
@@ -368,43 +359,52 @@ function Home() {
           </Link>
         </Reveal>
       </section>
-    </>
-  );
-}
 
-function Testimonials() {
-  const placeholders = [1, 2, 3];
-  return (
-    <section className="bg-ink text-ink-foreground">
-      <div className="container-page py-24">
-        <Reveal>
-          <h2 className="text-4xl font-extrabold uppercase sm:text-5xl">
-            Learning that leads to impact
-          </h2>
-          <p className="mt-4 max-w-2xl text-sm text-ink-foreground/60">
-            Placeholder cards — real learner testimonials will replace these once collected.
-          </p>
-        </Reveal>
-        <ul className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6">
-          {placeholders.map((n) => (
-            <li
-              key={n}
-              className="w-[85%] shrink-0 snap-start border border-ink-foreground/15 p-9 sm:w-[420px]"
-            >
-              <p className="font-display text-[0.65rem] font-bold tracking-[0.2em] text-primary uppercase">
-                Placeholder testimonial {n}
-              </p>
-              <p className="mt-5 leading-relaxed text-ink-foreground/80">
-                “Testimonial text pending — this card is reserved for a verified learner story.”
-              </p>
-              <div className="mt-8 border-t border-ink-foreground/15 pt-5 text-sm">
-                <p className="font-semibold">Learner name pending</p>
-                <p className="text-ink-foreground/50">Program · Field / profession</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+      {/* ENROLMENT */}
+      <section id="enrol" className="scroll-mt-24 bg-background">
+        <div className="container-page grid gap-14 py-24 lg:grid-cols-[1.1fr_1fr]">
+          <Reveal>
+            <p className="eyebrow">Enrolment</p>
+            <h2 className="mt-5 text-4xl font-extrabold uppercase sm:text-5xl">Enrol with Alpha</h2>
+            <p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">
+              Share your details and tell us what you're interested in. We'll reach out with the
+              next steps for the programs that fit you.
+            </p>
+            <div className="mt-10">
+              <EnrolmentForm />
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="bg-ink p-9 text-ink-foreground">
+              <h3 className="font-display text-lg font-extrabold tracking-[0.12em] uppercase">
+                Direct contact
+              </h3>
+              <ul className="mt-8 space-y-4 text-sm">
+                <li>
+                  <a href={`mailto:${CONTACT.email}`} className="break-all hover:text-primary">
+                    {CONTACT.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={CONTACT.phoneHref} className="hover:text-primary">
+                    {CONTACT.phoneDisplay}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={CONTACT.whatsapp}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="hover:text-primary"
+                  >
+                    Chat on WhatsApp
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }
