@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { EnrolmentForm } from "@/components/site/EnrolmentForm";
 import { CONTACT } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
@@ -23,13 +23,6 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [interest, setInterest] = useState("YOUR AI EDGE");
-  const [message, setMessage] = useState("");
-
-  const body = `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\n${message}`;
-
   return (
     <>
       <section className="border-b border-border">
@@ -46,81 +39,7 @@ function Contact() {
 
       <section className="container-page grid gap-14 py-20 lg:grid-cols-[1.2fr_1fr]">
         <Reveal>
-          <form
-            className="space-y-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
-                `Alpha Academy enquiry — ${interest}`,
-              )}&body=${encodeURIComponent(body)}`;
-            }}
-          >
-            <div>
-              <label htmlFor="name" className="font-display text-xs font-semibold tracking-[0.16em] uppercase">
-                Full name
-              </label>
-              <input
-                id="name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="font-display text-xs font-semibold tracking-[0.16em] uppercase">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              />
-            </div>
-            <div>
-              <label htmlFor="interest" className="font-display text-xs font-semibold tracking-[0.16em] uppercase">
-                I'm interested in
-              </label>
-              <select
-                id="interest"
-                value={interest}
-                onChange={(e) => setInterest(e.target.value)}
-                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <option>YOUR AI EDGE</option>
-                <option>Training for students</option>
-                <option>Training for professionals</option>
-                <option>Training for entrepreneurs</option>
-                <option>Training for organizations</option>
-                <option>Something else</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="message" className="font-display text-xs font-semibold tracking-[0.16em] uppercase">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                required
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              />
-            </div>
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 rounded-sm bg-primary px-8 py-4 font-display text-xs font-semibold tracking-[0.16em] uppercase text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              <Send className="size-4" /> Send enquiry
-            </button>
-            <p className="text-xs text-muted-foreground">
-              This opens your email app with the message pre-filled, addressed to Alpha Academy.
-            </p>
-          </form>
+          <EnrolmentForm />
         </Reveal>
 
         <Reveal delay={100}>

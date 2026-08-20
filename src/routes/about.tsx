@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import founder from "@/assets/founder.jpg.asset.json";
-import aboutImg from "@/assets/about.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
@@ -45,20 +44,10 @@ function About() {
         </div>
       </section>
 
-      <section className="container-page grid items-center gap-14 py-20 lg:grid-cols-2">
+      <section className="container-page py-20">
         <Reveal>
-          <img
-            src={aboutImg}
-            alt="A learner applying AI tools in daily work"
-            width={1200}
-            height={1408}
-            loading="lazy"
-            className="aspect-[4/5] w-full rounded-sm object-cover"
-          />
-        </Reveal>
-        <Reveal delay={100}>
           <h2 className="text-3xl font-extrabold uppercase">What we stand for</h2>
-          <dl className="mt-8 space-y-7">
+          <dl className="mt-8 grid gap-7 sm:grid-cols-2">
             {[
               ["Practical", "Learn skills you can actually use."],
               ["Relevant", "AI applied to your field, career, or business."],
