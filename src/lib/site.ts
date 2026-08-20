@@ -1,5 +1,5 @@
 export const CONTACT = {
-  email: "salifuebenezer10@gmail.com",
+  email: "alphaacademy500@gmail.com",
   phoneDisplay: "+234 903 645 2259",
   phoneHref: "tel:+2349036452259",
   whatsapp: "https://wa.me/2349036452259",
@@ -8,6 +8,14 @@ export const CONTACT = {
   instagram: "https://www.instagram.com/salifuebenezer10",
   facebook: "https://www.facebook.com/ebenezer.salifu.12",
 };
+
+export const INTEREST_OPTIONS = [
+  "AI FOR STUDENTS",
+  "AI FOR PROFESSIONALS",
+  "AI FOR ENTREPRENEURS",
+] as const;
+
+export type Interest = (typeof INTEREST_OPTIONS)[number];
 
 export type Program = {
   slug: "scale-with-ai" | "your-ai-edge";
