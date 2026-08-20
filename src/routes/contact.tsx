@@ -23,13 +23,6 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [interest, setInterest] = useState("YOUR AI EDGE");
-  const [message, setMessage] = useState("");
-
-  const body = `Name: ${name}\nEmail: ${email}\nInterest: ${interest}\n\n${message}`;
-
   return (
     <>
       <section className="border-b border-border">
