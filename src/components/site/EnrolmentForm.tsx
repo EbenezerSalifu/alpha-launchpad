@@ -2,8 +2,14 @@ import { useState } from "react";
 import { z } from "zod";
 import { Check, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { INTEREST_OPTIONS } from "@/lib/site";
 import { cn } from "@/lib/utils";
+
+// Hardcoded exact options requested
+const INTEREST_OPTIONS = [
+  "AI for Students",
+  "AI for Professionals",
+  "AI for Entrepreneurs"
+];
 
 const schema = z.object({
   full_name: z.string().trim().min(1, "Please enter your full name.").max(120),
@@ -35,12 +41,33 @@ export function EnrolmentForm() {
       return;
     }
     setSubmitting(true);
+    
+    // 1. Save to Supabase Database
     const { error: insertError } = await supabase.from("enrolments").insert(parsed.data);
-    setSubmitting(false);
+    
     if (insertError) {
+      setSubmitting(false);
       setError("We couldn't submit your details. Please try again in a moment.");
       return;
     }
+
+    // 2. Send Email Notification to alphaacademy500@gmail.com
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "25e09229-ccd7-4f96-97b7-31352ffd6402", // We will replace this in the next step!
+          subject: "New Student Registration - Alpha Academy",
+          from_name: "Alpha Academy Website",
+          message: `New student registration!\n\nName: ${parsed.data.full_name}\nContact: ${parsed.data.contact}\nGmail: ${parsed.data.gmail}\nInterests: ${parsed.data.interests.join(", ")}`
+        })
+      });
+    } catch (err) {
+      console.error("Email notification failed, but database save worked.", err);
+    }
+
+    setSubmitting(false);
     setDone(true);
     setFullName("");
     setContact("");
@@ -156,7 +183,7 @@ export function EnrolmentForm() {
         disabled={submitting}
         className="inline-flex min-h-14 items-center gap-2 rounded-sm bg-primary px-10 py-4 font-display text-xs font-semibold tracking-[0.16em] uppercase text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
       >
-        <Send className="size-4" aria-hidden="true" /> {submitting ? "Submitting…" : "Submit"}
+        <Send className="size-4" aria-hidden="true" /> {submitting ? "SUBMITTING..." : "SUBMIT"}
       </button>
     </form>
   );
