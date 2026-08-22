@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -32,7 +32,7 @@ export function Header() {
       <div className="container-page flex h-20 items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3" aria-label="Alpha Academy home">
           <img
-            src={logo.url}
+            src={logo}
             alt="Alpha Academy logo"
             width={44}
             height={44}
