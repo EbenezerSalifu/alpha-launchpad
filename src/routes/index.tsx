@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import heroAsset from "@/assets/ai-handshake.webp.asset.json";
+import heroImg from "@/assets/ai-handshake.webp";
 import founder from "@/assets/founder.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { PROGRAMS, CONTACT } from "@/lib/site";
@@ -118,7 +118,7 @@ function Home() {
           <Reveal delay={120}>
             <div className="relative">
               <img
-                src={heroAsset.url}
+                src={heroImg}
                 alt="A human hand and a robotic hand shaking, representing people working with AI"
                 width={1600}
                 height={1200}

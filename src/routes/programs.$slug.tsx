@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Calendar, Check, MessageCircle } from "lucide-react";
-import flyer from "@/assets/scale-with-ai.png.asset.json";
+import flyer from "@/assets/scale-with-ai.png";
 import { Reveal } from "@/components/site/Reveal";
 import { CONTACT } from "@/lib/site";
 
@@ -194,7 +194,7 @@ function ProgramDetail() {
         {detail.showFlyer && (
           <aside>
             <img
-              src={flyer.url}
+              src={flyer}
               alt="SCALE WITH AI official program flyer"
               width={1000}
               height={1250}
