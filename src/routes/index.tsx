@@ -118,8 +118,8 @@ function Home() {
           <Reveal delay={120}>
             <div className="relative">
               <img
-                src={heroImg}
-                alt="A professional working on a laptop, applying AI tools to everyday work"
+                src={heroAsset.url}
+                alt="A human hand and a robotic hand shaking, representing people working with AI"
                 width={1600}
                 height={1200}
                 className="w-full rounded-sm object-cover"
