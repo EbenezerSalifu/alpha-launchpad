@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/techgirl.jpg";
+import heroAsset from "@/assets/ai-handshake.webp.asset.json";
 import founder from "@/assets/founder.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { PROGRAMS, CONTACT } from "@/lib/site";
