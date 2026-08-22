@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import founder from "@/assets/founder.jpg.asset.json";
+import founder from "@/assets/founder.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
@@ -69,7 +69,7 @@ function About() {
         <div className="container-page grid items-center gap-12 py-20 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal>
             <img
-              src={founder.url}
+              src={founder}
               alt="Ebenezer Salifu, Founder of Alpha Academy"
               width={1456}
               height={1941}
