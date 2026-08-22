@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero-learner.jpg.asset.json";
-import founder from "@/assets/founder.jpg.asset.json";
+import heroImg from "@/assets/techgirl.jpg";
+import founder from "@/assets/founder.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { PROGRAMS, CONTACT } from "@/lib/site";
 import { Testimonials } from "@/components/site/Testimonials";
@@ -118,7 +118,7 @@ function Home() {
           <Reveal delay={120}>
             <div className="relative">
               <img
-                src={heroImg.url}
+                src={heroImg}
                 alt="A professional working on a laptop, applying AI tools to everyday work"
                 width={1600}
                 height={1200}
@@ -306,7 +306,7 @@ function Home() {
         <div className="container-page grid items-center gap-12 py-20 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal>
             <img
-              src={founder.url}
+              src={founder}
               alt="Ebenezer Salifu, Founder of Alpha Academy"
               width={1456}
               height={1941}

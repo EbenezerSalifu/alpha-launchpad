@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { CONTACT } from "@/lib/site";
 
 function XIcon({ className }: { className?: string }) {
@@ -24,7 +24,7 @@ export function Footer() {
       <div className="container-page grid gap-14 py-20 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <img
-            src={logo.url}
+            src={logo}
             alt="Alpha Academy logo"
             width={72}
             height={72}
